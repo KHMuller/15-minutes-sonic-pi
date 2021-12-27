@@ -32,8 +32,8 @@ with_fx(:hpf, pre_amp: 20, cutoff: 40) do
       live_loop :mychords do
         with_synth :fm do
           sync :beat
-          chord_name = [:a2, :e3, :d3, :c3, :a3, :a2].tick
-          play chord(chord_name, :minor).choose, cutoff: rrand(50, 90), amp: [0.3, 0.4, 0.5].choose, attack: 0.5, release: rrand(1, 4), cutoff_max: 90
+          chord_name = [:a2, :e3, :d3, :e3, :a3, :a2].choose
+          play chord(chord_name, :minor).choose, divisor: 2, cutoff: rrand(50, 90), amp: [0.3, 0.4, 0.5].choose, attack: 0.5, release: rrand(1, 4), cutoff_max: 90
           puts chord_name
         end
       end
