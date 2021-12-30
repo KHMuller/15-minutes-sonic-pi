@@ -2,8 +2,6 @@
 # 30th of December 2021
 # Waves
 # Passing some variables from :master to :choirS, I hope they are listening
-# This version without drum is used for Minke, Fin and Humpback Whales videos
-# Check the YouTube channel https://www.youtube.com/c/muuuh
 
 ns_low = (scale :a2, :major_pentatonic, num_octaves: 3)
 
