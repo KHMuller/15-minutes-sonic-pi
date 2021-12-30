@@ -1,5 +1,5 @@
 # 15 Minutes
-# 29th of December 2022
+# 29th of December 2021
 # Waves
 # Keep different tracks and join them in DaVinci Resolve
 # With this approach I may overcome the amp issues between themes
