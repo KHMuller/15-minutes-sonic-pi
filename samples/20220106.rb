@@ -78,18 +78,19 @@ live_loop :master do
   n = rrand_i(0, 9)
   
   cue 'master2cello0', n, l, 1
-  
-  # shift within scale 
+  puts l
+  # shift within scale
   shift = (ring -7, -6, -5, -4, -3, -2, -1, 0, +1, +2, +3, +4, +5, +6, +7)
-  if l = 8 then
-    32.times do
+  if l == 8 then
+    64.times do
       cue 'master2violin', n + shift.choose, 0.125, 1
       sleep 0.125
     end
   else
-    16.times do
+    32.times do
       cue 'master2violin', n + shift.tick, 0.125, 1
       sleep 0.125
     end
   end
+  sleep 0.125
 end
