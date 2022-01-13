@@ -1,4 +1,2 @@
-# 15 Minutes :: Sonic PI
-Although the original idea was to experiment 15 minutes with Sonic PI, from time to time, I usually spend more than 15 minutes.
-
-The code files are saved mainly for me to have code snippets handy
+# 15 Minutes :: Sonic Pi
+The original idea was to experiment from time to time with Sonic Pi and backup the codes in this repository. I converted it into a challange to dedicate daily at least 15 minutes to explore sounds and rhythms.
