@@ -57,8 +57,8 @@ end
 
 live_loop :contras do
   use_bpm 60
-  set :n, (ring :c3, :f3, :g3, :c3).tick(:selectnote)
-  set :r, (ring 2, 1, 1, 5).tick(:selectriff)
+  set :n, (ring :c3, :f3, :g3, :c3).tick(:selectnotecontras)
+  set :r, (ring 2, 1, 1, 5).tick(:selectriffcontras)
   puts get[:r]
   voiceriff(note=get[:n], riff=get[:r])
 end
