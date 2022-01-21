@@ -8,7 +8,7 @@ use_debug false
 
 define :contra do |note, length=1, amp=0.5, pan=0.5|
   use_synth :fm
-  att = 0.125
+  att = 0.1
   with_fx :reverb, room: 0.5, mix: 0.5 do
     play note, attack: att, release: length-att, pan: pan, cutoff: note+1, amp: amp
   end
@@ -16,14 +16,13 @@ end
 
 define :flute do |note, length=1, amp=1, pan=0|
   use_synth :pretty_bell
-  att = 0.125
+  att = 0.1
   with_fx :reverb, room: 0.5, mix: 0.5 do
     play note, attack: att, release: length-att, pan: pan, cutoff: note+1, amp: amp
   end
 end
 
 define :voiceriff do |note=:c3, riff=0, length=1, amp=1, pan=0.5|
-  puts riff
   if (riff = 1)
     4.times do
       contra(note+[0, -2, -5, 4].choose, length, 2)
@@ -56,7 +55,7 @@ live_loop :drums do
 end
 
 live_loop :contras do
-  use_bpm 60
+  use_bpm 120
   set :n, (ring :c3, :f3, :g3, :c3).tick(:selectnotecontras)
   set :r, (ring 2, 1, 1, 5).tick(:selectriffcontras)
   puts get[:r]
@@ -65,7 +64,16 @@ end
 
 live_loop :voices do
   use_bpm 240
-  set :n, (ring :c4, :d4, :e4, :f4, :g4, :a4, :b4).shuffle.tick(:selectnotevoice)
-  flute(get[:n], 1)
-  sleep 1
+  a = one_in(4)
+  if a
+    4.times do
+      set :n, (ring :c4, :d4, :e4, :f4, :g4, :a4, :b4).shuffle.tick(:selectnotevoice)
+      flute(get[:n], 0.5)
+      sleep 0.5
+    end
+  else
+    set :n, (ring :c4, :d4, :e4, :f4, :g4, :a4, :b4).shuffle.tick(:selectnotevoice)
+    flute(get[:n], 1)
+    sleep 1
+  end
 end
