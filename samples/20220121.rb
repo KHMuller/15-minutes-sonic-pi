@@ -6,7 +6,7 @@
 
 use_debug false
 
-define :bass do |note, length=1, amp=0.5, pan=0.5|
+define :contra do |note, length=1, amp=0.5, pan=0.5|
   use_synth :fm
   att = 0.125
   with_fx :reverb, room: 0.5, mix: 0.5 do
@@ -26,23 +26,23 @@ define :voiceriff do |note=:c3, riff=0, length=1, amp=1, pan=0.5|
   puts riff
   if (riff = 1)
     4.times do
-      cello(note+[0, -2, -5, 4].choose, length, 2)
+      contra(note+[0, -2, -5, 4].choose, length, 2)
       sleep length
     end
   end
   if (riff = 2)
-    cello(note, length, 2)
+    contra(note, length, 2)
     sleep length
-    cello(note-5, length, 2)
+    contra(note-5, length, 2)
     sleep length
-    cello(note-2, length, 2)
+    contra(note-2, length, 2)
     sleep length
-    cello(note, length, 2)
+    contra(note, length, 2)
     sleep length
   end
   if (riff = 3)
     4.times do
-      cello(note+rrand_i(4, -5), length, 2)
+      contra(note+rrand_i(4, -5), length, 2)
       sleep length
     end
   end
@@ -50,12 +50,12 @@ end
 
 live_loop :drums do
   use_bpm 60
-  cue :basses
+  cue :contras
   cue :voices
   sleep 1
 end
 
-live_loop :basses do
+live_loop :contras do
   use_bpm 60
   set :n, (ring :c3, :f3, :g3, :c3).tick(:selectnote)
   set :r, (ring 2, 1, 1, 5).tick(:selectriff)
