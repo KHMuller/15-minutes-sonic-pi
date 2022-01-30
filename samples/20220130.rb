@@ -55,7 +55,7 @@ live_loop :master do
     wave(note+7, cycle_length*speed, 1, 0.5)
   end
   (cycle_length*speed*2).times do
-    ntp = (scale note+12, use_scale, num_octaves = 3).choose if (spread 7, 8).tick(:gettingaround)
+    ntp = (scale note+12, use_scale, num_octaves = 3).choose if (spread 15, 16).choose
     voice(ntp, 0.5, 1)
     sleep 0.5
   end
