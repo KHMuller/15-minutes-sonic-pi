@@ -1,10 +1,10 @@
 # 15 Minutes
 # 11th of February
-# Not bad ;)
+# Not bad ;) still ground for improvement though
 
 ns_low = (scale :a2, :major_pentatonic, num_octaves: 2)
 coff = 50
-use_bpm 120
+use_bpm 60
 
 define :violin do |note, length=1, amp=1, pan=0|
   use_synth :blade
@@ -59,8 +59,22 @@ live_loop :master do
   end
   cue 'master2cello0', n, l, 1
   cue 'master2cello1', j+12, l, 1
-  (l*4).times do
-    violin(ns_low[rrand_i(0, 9)]+24, 0.25, 1, 0.3) if (spread 15, 16).tick(:violinrhythm)
-    sleep 0.25
+  if one_in(4)
+    (l*2).times do
+      violin(ns_low[rrand_i(0, 9)]+24, 0.5, 1, 0.3)
+      sleep 0.5
+    end
+  else
+    if one_in(4)
+      (l*4).times do
+        violin(ns_low[rrand_i(0, 9)]+24, 0.25, 1, 0.3) if (spread 3, 4).tick(:violinrhythm)
+        sleep 0.25
+      end
+    else
+      (l*8).times do
+        violin(ns_low[rrand_i(0, 9)]+24, 0.125, 1, 0.3) if (spread 7, 8).tick(:violinrhythm)
+        sleep 0.125
+      end
+    end
   end
 end
